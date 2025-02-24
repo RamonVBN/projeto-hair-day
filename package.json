@@ -3,7 +3,7 @@
   "description": "Aplicação web para agendamentos de corte de cabelo. ",
   "author": "Ramon Barros",
   "scripts": {
-    "server": "json-server --watch server.json --port 3333",
+    "server": "json-server --watch server.json --port 3332",
     "build": "webpack",
     "dev": "webpack server"
   },
