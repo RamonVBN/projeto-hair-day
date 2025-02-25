@@ -4,11 +4,11 @@
 import  './libs/dayjs.js'
 
 // CSS
- import './styles/global.css'
+import './styles/global.css'
 
- import './styles/form.css'
+import './styles/form.css'
 
- import './styles/schedule.css'
+import './styles/schedule.css'
 
 
  // JS
@@ -19,3 +19,8 @@ import "./modules/page-load.js"
 import "./modules/form/date-change.js"
 
 import './modules/schedules/cancel.js'
+
+import { generateSchedulesEntry } from './utils/generate-schedule.js'
+
+export const fakeDatabase = [...generateSchedulesEntry()]
+

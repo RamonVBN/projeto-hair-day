@@ -1,3 +1,4 @@
+import { fakeDatabase } from "../main.js";
 import { apiConfig } from "./api-config.js";
 
 export async function scheduleCancel({id}){
@@ -10,6 +11,8 @@ export async function scheduleCancel({id}){
         
     } catch (error) {
         console.log(error)
-        alert('Não foi possível cancelar o agendamento.')
+        // alert('Não foi possível cancelar o agendamento.')
+        const indexToRemove = fakeDatabase.findIndex((value)=> value.id===id)
+        fakeDatabase.splice(indexToRemove, 1)
     }
 }

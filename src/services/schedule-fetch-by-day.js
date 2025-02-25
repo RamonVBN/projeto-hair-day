@@ -2,6 +2,13 @@ import { apiConfig } from "./api-config"
 
 import dayjs from 'dayjs'
 
+import {fakeDatabase} from "../main"
+
+
+function getSchedulesFromToday(schedules, today)  {
+    return schedules.filter((schedule) => dayjs(today).isSame(schedule.when, 'day'))
+}
+
 export async function scheduleFetchByDay({date}){
     try {
         // Fazendo a requisição.
@@ -11,11 +18,12 @@ export async function scheduleFetchByDay({date}){
         const data = await response.json()
 
         // Filtra os agendamentos pelo dia selecionado.
-        const dailySchedules = data.filter((schedule) => dayjs(date).isSame(schedule.when, 'day'))
+        const dailySchedules = getSchedulesFromToday(data, date)
 
         return dailySchedules
     } catch (error) {
         console.log(error)
-        alert('Não foi possível buscar o agendamento do dia selecionado.')
+        // alert('Não foi possível buscar o agendamento do dia selecionado.')
+        return getSchedulesFromToday(fakeDatabase, date)
     }
 }
