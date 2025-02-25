@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     target: 'web',
@@ -23,7 +24,8 @@ module.exports = {
         liveReload: true
 
     },
-    plugins: [ new HtmlWebpackPlugin({
+    plugins: [new Dotenv(),
+        new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "index.html"),
         favicon: path.resolve('src', 'assets', 'scissors.svg')
     }),

@@ -10,6 +10,9 @@ function getSchedulesFromToday(schedules, today)  {
 }
 
 export async function scheduleFetchByDay({date}){
+    if(!process.env.SHOULD_MAKE_API_REQUEST){
+        return getSchedulesFromToday(fakeDatabase, date)
+    }
     try {
         // Fazendo a requisição.
         const response = await fetch(`${apiConfig.baseURL}/schedules`)
@@ -23,7 +26,6 @@ export async function scheduleFetchByDay({date}){
         return dailySchedules
     } catch (error) {
         console.log(error)
-        // alert('Não foi possível buscar o agendamento do dia selecionado.')
-        return getSchedulesFromToday(fakeDatabase, date)
+        alert('Não foi possível buscar o agendamento do dia selecionado.')
     }
 }
